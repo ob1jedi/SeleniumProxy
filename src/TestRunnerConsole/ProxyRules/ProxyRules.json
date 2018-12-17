@@ -1,0 +1,32 @@
+{
+  "rules": [
+    {
+      "name": "Replace response with 'bob'",
+      "onEvent": "request",
+      "junction":  "or",
+      "ifTrue": [
+        {
+          "part": "body",
+          "op": "contains",
+          "value": "{\"response\":\"ok\"}"
+        },
+        {
+          "part": "url",
+          "op": "contains",
+          "value": "facebook"
+        },
+        {
+          "part": "headers",
+          "op": "contains",
+          "value": "google"
+        }
+      ],
+      "thenSet": [
+        {
+          "part": "body",
+          "value": "{\"response\":\"bob\"}"
+        }
+      ]
+    }
+  ]
+}
